@@ -50,25 +50,31 @@ apps=(
 # Install apps to /Applications
 # Default is: /Users/$user/Applications
 echo "installing apps with Cask..."
-brew cask install --appdir="/Applications" ${apps[@]}
+brew install --cask --no-quarantine --appdir="/Applications" ${apps[@]}
 
 brew cask cleanup
 brew cleanup
 
-read -p "Use hyper settings sync? (y/n)"
+read -p "Use hyper settings sync? (y/n): "
 if [ ${REPLY} == "y" ]
 then
-	plugin-start = "$(grep -n "plugins: \[" ~/.hyper.js | head -n 1 | cut -d: -f1)"
-	plugin-end = "$(tail -n $(plugin-start) ~/.hyper.js | grep -n "]," | head -n 1 | cut -d: -f1)"
-	sed -i "$(plugin-end)i\t'hyper-sync-settings'" ~/.hyper.js
+	osascript -e 'activate app "Hyper"' &
+	wait %1
+	osascript -e 'quit app "Hyper"'
 
+	sed -i '' -e 's/plugins: \[\]/plugins: \[ '\''hyper-sync-settings'\'' \]/g' ~/.hyper.js
+	
+	osascript -e 'activate app "Hyper"' &
+	wait %1
+	osascript -e 'quit app "Hyper"'
+		
 	read -p "Enter personal access token: " accessToken
 	read -p "Enter gist id: " gistId
 	echo "{\n\t\"personalAccessToken\": \"$accessToken\",\n\"gistId\": \"$gistId\"\n}" >> ~/.hyper_plugins/.hyper-sync-settings.json
 	echo "To pull settings open Hyper and go to Plugins -> Sync Settings -> Restore Settings"
 fi
 
-read -p "Use vs-code settings sync? (y/n)"
+read -p "Use vs-code settings sync? (y/n): "
 if [ ${REPLY} == "y" ]
 then 
 	read -p "Enter personal access token: " accessToken
