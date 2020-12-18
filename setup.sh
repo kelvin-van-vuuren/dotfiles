@@ -58,20 +58,43 @@ brew cleanup
 read -p "Use hyper settings sync? (y/n): "
 if [ ${REPLY} == "y" ]
 then
+	rm ~/.hyper.js
+
 	osascript -e 'activate app "Hyper"' &
 	wait %1
+	sleep 2
 	osascript -e 'quit app "Hyper"'
 
+	#add hyper-sync-settings and reload to install
 	sed -i '' -e 's/plugins: \[\]/plugins: \[ '\''hyper-sync-settings'\'' \]/g' ~/.hyper.js
 	
 	osascript -e 'activate app "Hyper"' &
 	wait %1
+	sleep 2
 	osascript -e 'quit app "Hyper"'
-		
+
+	# downgrade hyper-sync-settings to 3.0.0 to get around issue with dugite library not being able to find git
+	# will keep and eye on the repo to see when maintainers fix this
+	echo "installing node via brew"
+	brew install node
+	~/.hyper_plugins & npm i --save hyper-sync-settings@3.0.0
+
+	osascript -e 'activate app "Hyper"' &
+	wait %1
+	sleep 2
+	osascript -e 'quit app "Hyper"'
+	
+	# setup access token and gist id to fetch settings
 	read -p "Enter personal access token: " accessToken
 	read -p "Enter gist id: " gistId
+	rm ~/.hyper_plugins/.hyper-sync-settings.json
 	echo "{\n\t\"personalAccessToken\": \"$accessToken\",\n\"gistId\": \"$gistId\"\n}" >> ~/.hyper_plugins/.hyper-sync-settings.json
 	echo "To pull settings open Hyper and go to Plugins -> Sync Settings -> Restore Settings"
+
+	osascript -e 'activate app "Hyper"' &
+	wait %1
+	sleep 2
+	osascript -e 'quit app "Hyper"'
 fi
 
 read -p "Use vs-code settings sync? (y/n): "
