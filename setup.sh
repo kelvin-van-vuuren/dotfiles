@@ -55,6 +55,27 @@ brew cask install --appdir="/Applications" ${apps[@]}
 brew cask cleanup
 brew cleanup
 
+read -p "Use hyper settings sync? (y/n)"
+if [ ${REPLY} == "y" ]
+then
+	plugin-start = "$(grep -n "plugins: \[" ~/.hyper.js | head -n 1 | cut -d: -f1)"
+	plugin-end = "$(tail -n $(plugin-start) ~/.hyper.js | grep -n "]," | head -n 1 | cut -d: -f1)"
+	sed -i "$(plugin-end)i\t'hyper-sync-settings'" ~/.hyper.js
+
+	read -p "Enter personal access token: " accessToken
+	read -p "Enter gist id: " gistId
+	echo "{\n\t\"personalAccessToken\": \"$accessToken\",\n\"gistId\": \"$gistId\"\n}" >> ~/.hyper_plugins/.hyper-sync-settings.json
+	echo "To pull settings open Hyper and go to Plugins -> Sync Settings -> Restore Settings"
+fi
+
+read -p "Use vs-code settings sync? (y/n)"
+if [ ${REPLY} == "y" ]
+then 
+	read -p "Enter personal access token: " accessToken
+	read -p "Enter gist id: " gistId
+	echo "{\n\t\"personalAccessToken\": \"$accessToken\",\n\"gistId\": \"$gistId\"\n}" >> ~/.hyper_plugins/.hyper-sync-settings.json
+fi
+
 killall Finder
 
 echo "Done!"
