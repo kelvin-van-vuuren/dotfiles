@@ -18,12 +18,16 @@ packages=(
 	tree
 	pytest
 	node
+	llvm
 )
 
 brew install ${packages[@]}
 
 echo "Cleaning up brew"
 brew cleanup
+
+#setup clang-tidy
+ln -s "$(brew --prefix llvm)/bin/clang-tidy" "/usr/local/bin/clang-tidy"
 
 # Install MacOS Applications
 apps=(
