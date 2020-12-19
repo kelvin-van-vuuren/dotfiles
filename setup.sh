@@ -20,22 +20,13 @@ brew install glfw
 brew install cmake
 brew install python
 brew install tree
+brew install pytest
+brew install node
 
 echo "Cleaning up brew"
 brew cleanup
 
-#Install Zsh & Oh My Zsh
-echo "Installing Oh My ZSH..."
-curl -L http://install.ohmyz.sh | sh
-
-echo "Setting up Zsh plugins..."
-cd ~/.oh-my-zsh/custom/plugins
-git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
-git clone git://github.com/zsh-users/zsh-autosuggestions.git
-git clone git://github.com/zsh-users/zsh-history-substring-search.git
-
-echo "Setting ZSH as shell..."
-chsh -s /bin/zsh
+sh setup_zsh.sh
 
 # Install MacOS Applications
 apps=(
@@ -50,7 +41,7 @@ apps=(
 # Install apps to /Applications
 # Default is: /Users/$user/Applications
 echo "installing apps with Cask..."
-brew install --cask --no-quarantine --appdir="/Applications" ${apps[@]}
+brew cask install --no-quarantine --appdir="/Applications" ${apps[@]}
 
 brew cask cleanup
 brew cleanup
@@ -58,43 +49,7 @@ brew cleanup
 read -p "Use hyper settings sync? (y/n): "
 if [ ${REPLY} == "y" ]
 then
-	rm ~/.hyper.js
-
-	osascript -e 'activate app "Hyper"' &
-	wait %1
-	sleep 2
-	osascript -e 'quit app "Hyper"'
-
-	#add hyper-sync-settings and reload to install
-	sed -i '' -e 's/plugins: \[\]/plugins: \[ '\''hyper-sync-settings'\'' \]/g' ~/.hyper.js
-	
-	osascript -e 'activate app "Hyper"' &
-	wait %1
-	sleep 2
-	osascript -e 'quit app "Hyper"'
-
-	# downgrade hyper-sync-settings to 3.0.0 to get around issue with dugite library not being able to find git
-	# will keep and eye on the repo to see when maintainers fix this
-	echo "installing node via brew"
-	brew install node
-	~/.hyper_plugins & npm i --save hyper-sync-settings@3.0.0
-
-	osascript -e 'activate app "Hyper"' &
-	wait %1
-	sleep 2
-	osascript -e 'quit app "Hyper"'
-	
-	# setup access token and gist id to fetch settings
-	read -p "Enter personal access token: " accessToken
-	read -p "Enter gist id: " gistId
-	rm ~/.hyper_plugins/.hyper-sync-settings.json
-	echo "{\n\t\"personalAccessToken\": \"$accessToken\",\n\"gistId\": \"$gistId\"\n}" >> ~/.hyper_plugins/.hyper-sync-settings.json
-	echo "To pull settings open Hyper and go to Plugins -> Sync Settings -> Restore Settings"
-
-	osascript -e 'activate app "Hyper"' &
-	wait %1
-	sleep 2
-	osascript -e 'quit app "Hyper"'
+	sh setup_hyper_settings.sh
 fi
 
 read -p "Use vs-code settings sync? (y/n): "
