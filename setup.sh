@@ -9,6 +9,11 @@ sh setup_homebrew.sh
 #setup zsh via oh my zsh and change to default shell
 sh setup_zsh.sh
 
+read -p "Setup git config? (y/n): "
+if [ ${REPLY} == "y" ] then
+	sh setup_git.sh
+fi
+
 read -p "Use hyper settings sync? (y/n): "
 if [ ${REPLY} == "y" ] then
 	sh setup_hyper_settings.sh
