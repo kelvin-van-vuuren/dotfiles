@@ -19,15 +19,16 @@ packages=(
 	pytest
 	node
 	llvm
+	jq
 )
 
 brew install ${packages[@]}
 
-echo "Cleaning up brew"
-brew cleanup
-
 #setup clang-tidy
 ln -s "$(brew --prefix llvm)/bin/clang-tidy" "/usr/local/bin/clang-tidy"
+
+echo "Cleaning up brew"
+brew cleanup
 
 # Install MacOS Applications
 apps=(
@@ -44,5 +45,4 @@ apps=(
 echo "installing apps with Cask..."
 brew cask install --no-quarantine --appdir="/Applications" ${apps[@]}
 
-brew cask cleanup
 brew cleanup
