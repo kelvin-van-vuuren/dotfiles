@@ -10,17 +10,20 @@ sh setup_homebrew.sh
 sh setup_zsh.sh
 
 read -p "Setup git config? (y/n): "
-if [ ${REPLY} == "y" ] then
+if [ ${REPLY} == "y" ] 
+then
 	sh setup_git.sh
 fi
 
 read -p "Use hyper settings sync? (y/n): "
-if [ ${REPLY} == "y" ] then
+if [ ${REPLY} == "y" ] 
+then
 	sh setup_hyper_settings.sh
 fi
 
 read -p "Use vs-code settings sync? (y/n): "
-if [ ${REPLY} == "y" ] then 
+if [ ${REPLY} == "y" ] 
+then 
 	sh setup_vs_code.sh
 fi
 
