@@ -16,10 +16,10 @@ packages=(
 	cmake
 	python
 	tree
-	pytest
 	node
 	llvm
 	jq
+	shellcheck
 )
 
 brew install ${packages[@]}
