@@ -11,19 +11,13 @@ function quit_hyper {
 	osascript -e 'quit app "Hyper"'
 }
 
-rm ~/.hyper.js
+start_hyper
+
+hyper i hyper-sync-settings
 
 # downgrade hyper-sync-settings to 3.0.0 to get around issue with dugite library not being able to find git
 # will keep and eye on the repo to see when maintainers fix this
 ~/.hyper_plugins & npm i --save hyper-sync-settings@3.0.0
-
-start_hyper
-
-#add hyper-sync-settings and reload to install
-sed -i '' -e 's/plugins: \[\]/plugins: \[ '\''hyper-sync-settings'\'' \]/g' ~/.hyper.js
-sleep 4
-quit_hyper
-start_hyper
 
 read -p "First time setup? (y/n): " firstTimeSetup
 if [ $firstTimeSetup == "y" ] 
@@ -31,15 +25,15 @@ then
 	read -p "Use kelvin settings as starting point? (y/n): "
 	if [ ${REPLY} == "y" ] 
 	then
+		# download from kelvin settings
 		git clone git@gist.github.com:904f8f7c3780580178027b1121545c3f.git
-		cp ./.hyper.js ~/.hyper.js
+		cp ./904f8f7c3780580178027b1121545c3f/.hyper.js ~/.hyper.js
+		rm -rf 904f8f7c3780580178027b1121545c3f
 	fi
 
-	# download from kelvin settings
 	open https://gist.github.com/
 	echo "Create a secret Gist on Github via https://gist.github.com/"
 	read -p "Press [Enter] key to continue after doing this..."
-	#use kelvin settings as starting point? 
 fi
 
 open https://github.com/settings/tokens/new?scopes=gist
@@ -50,17 +44,15 @@ read -p "Press [Enter] key to continue after doing this..."
 read -p "Enter personal access token: " accessToken
 read -p "Enter Gist ID (end section of Gist URL): " gistId
 rm ~/.hyper_plugins/.hyper-sync-settings.json
-echo "{\n\t\"personalAccessToken\": \"$accessToken\",\n\"gistId\": \"$gistId\"\n}" >> ~/.hyper_plugins/.hyper-sync-settings.json
+echo "{\n\t\"personalAccessToken\": \"$accessToken\",\n\t\"gistId\": \"$gistId\"\n}" >> ~/.hyper_plugins/.hyper-sync-settings.json
 
+quit_hyper
 start_hyper
 
 if [ $firstTimeSetup == "y" ] 
 then
-	#upload settings
-	osascript -e 'tell application "System Events" to tell process "Hyper" to click menu item "Backup Settings" of menu 1 of menu item "Sync Settings" of menu 1 of menu bar item "Plugins" of menu bar 1' 
-	delay 2
+	echo -e "Go to Hyper App and on the menu bar click Plugins -> Sync Settings -> Backup Settings to upload settings to your Github."
+else
+	echo -e "Go to Hyper App and on the menu bar click Plugins -> Sync Settings -> Restore Settings to download settings from your Github."
 fi
-#pull settings
-osascript -e 'tell application "System Events" to tell process "Hyper" to click menu item "Restore Settings" of menu 1 of menu item "Sync Settings" of menu 1 of menu bar item "Plugins" of menu bar 1' 
-delay 2
-osascript -e 'quit app "Hyper"'
+read -p "Press [Enter] key to continue after doing this..."
