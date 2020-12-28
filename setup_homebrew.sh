@@ -16,18 +16,19 @@ packages=(
 	cmake
 	python
 	tree
-	pytest
 	node
 	llvm
+	jq
+	shellcheck
 )
 
 brew install ${packages[@]}
 
-echo "Cleaning up brew"
-brew cleanup
-
 #setup clang-tidy
 ln -s "$(brew --prefix llvm)/bin/clang-tidy" "/usr/local/bin/clang-tidy"
+
+echo "Cleaning up brew"
+brew cleanup
 
 # Install MacOS Applications
 apps=(
@@ -42,7 +43,6 @@ apps=(
 # Install apps to /Applications
 # Default is: /Users/$user/Applications
 echo "installing apps with Cask..."
-brew cask install --no-quarantine --appdir="/Applications" ${apps[@]}
+brew install --cask --no-quarantine --appdir="/Applications" ${apps[@]}
 
-brew cask cleanup
 brew cleanup
