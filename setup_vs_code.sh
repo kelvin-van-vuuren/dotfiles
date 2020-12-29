@@ -21,8 +21,9 @@ then
 	done
 
 	#copy settings 
-	cp ./20c88baae23450a682c85301b283c6c0/settings.json /Users/$USER/Library/Application\ Support/Code/User/settings.json
-	cp ./20c88baae23450a682c85301b283c6c0/keyBindingsMac.json /Users/$USER/Library/Application\ Support/Code/User/keybindings.json
+	cp ./20c88baae23450a682c85301b283c6c0/settings.json ~/Library/Application\ Support/Code/User/settings.json
+	cp ./20c88baae23450a682c85301b283c6c0/keyBindingsMac.json ~/Library/Application\ Support/Code/User/keybindings.json
+	rm -rf 20c88baae23450a682c85301b283c6c0
 fi
 
 #open welcome to settings sync page for login
