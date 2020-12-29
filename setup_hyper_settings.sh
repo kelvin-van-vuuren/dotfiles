@@ -43,8 +43,7 @@ read -p "Press [Enter] key to continue after doing this..."
 # setup access token and gist id to fetch settings
 read -p "Enter personal access token: " accessToken
 read -p "Enter Gist ID (end section of Gist URL): " gistId
-rm ~/.hyper_plugins/.hyper-sync-settings.json
-echo "{\n\t\"personalAccessToken\": \"$accessToken\",\n\t\"gistId\": \"$gistId\"\n}" >> ~/.hyper_plugins/.hyper-sync-settings.json
+printf '{\n\t"personalAccessToken": '"$accessToken"',\n\t"gistId": '"$gistId"'\n}\n' > ~/.hyper_plugins/.hyper-sync-settings.json
 
 quit_hyper
 start_hyper
