@@ -32,9 +32,4 @@ wait %1
 
 read -p "Login via Github on the Welcome to Settings Sync tab that will open in VS Code then press [Enter] key when done..."
 
-# Make sure settings have been downloaded
-osascript -e 'tell application "System Events" to keystroke "p" using {command down, shift down}'
-osascript -e 'tell application "System Events" to keystroke "Sync: Download Settings"'
-osascript -e 'tell application "System Events" to key code 36'
-
-osascript -e 'quit app "Visual Studio Code"'
+echo "To download settings go to VSCode and open the Command Palette and enter the 'Sync: Download Settings' Command"
