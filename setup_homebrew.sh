@@ -30,19 +30,14 @@ ln -s "$(brew --prefix llvm)/bin/clang-tidy" "/usr/local/bin/clang-tidy"
 echo "Cleaning up brew"
 brew cleanup
 
-# Install MacOS Applications
-apps=(
-	google-chrome
-	sublime-text
-	visual-studio-code
-	fiji
-	hyper
-	virtualbox
-)
-
 # Install apps to /Applications
 # Default is: /Users/$user/Applications
 echo "installing apps with Cask..."
-brew install --cask --no-quarantine --appdir="/Applications" ${apps[@]}
+brew install --cask --no-quarantine --appdir="/Applications" google-chrome
+brew install --cask --no-quarantine --appdir="/Applications" sublime-text
+brew install --cask --no-quarantine --appdir="/Applications" visual-studio-code
+brew install --cask --no-quarantine --appdir="/Applications" hyper
+brew install --cask --no-quarantine --appdir="/Applications" fiji
+brew install --cask --no-quarantine --appdir="/Applications" virtualbox
 
 brew cleanup
