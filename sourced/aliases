@@ -1,0 +1,7 @@
+alias zshconfig="$EDITOR ~/.zshrc"
+alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
+
+alias gdiff="git-diff"
+alias gs="git status"
+alias gcm="git commit -m"
+alias "cd.."="cd .."

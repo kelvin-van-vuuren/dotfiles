@@ -1,0 +1,17 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.zshrc: zshrc
+    ~/.hyper.js: hyper.js
+    ~/.gitignore_global: gitignore_global 
+
+- create:
+    - ~/Screenshots
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - [sh setup/setup.sh, Installing submodules]

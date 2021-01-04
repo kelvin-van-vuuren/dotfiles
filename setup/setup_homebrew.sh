@@ -20,6 +20,7 @@ packages=(
 	llvm
 	jq
 	shellcheck
+	the_silver_searcher
 )
 
 brew install ${packages[@]}
@@ -38,6 +39,6 @@ brew install --cask --no-quarantine --appdir="/Applications" sublime-text
 brew install --cask --no-quarantine --appdir="/Applications" visual-studio-code
 brew install --cask --no-quarantine --appdir="/Applications" hyper
 brew install --cask --no-quarantine --appdir="/Applications" fiji
-brew install --cask --no-quarantine --appdir="/Applications" virtualbox
+brew install --cask --no-quarantine --appdir="/Applications" slack
 
 brew cleanup
