@@ -14,4 +14,8 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - [sh setup/setup.sh, Installing submodules]
+  - 
+    command: cd setup && sh setup.sh
+    stdin: true
+    stdout: true
+    description: Running setup script
