@@ -2,40 +2,20 @@
 
 source config.sh
 
-# if [ $machine = Mac ]; then
-# 	echo "Installing Mac Xcode Command Line Tools..."
-# 	xcode-select --install
-# fi
-
-#setup homebrew and install packages / apps
 sh setup_homebrew.sh
 
 if [ $machine = Mac ]; then
 	sh mac/mac-settings.sh
+else 
+	echo "Setting Linux settings" 
 fi
 
-#setup zsh via oh my zsh and change to default shell
 sh setup_zsh.sh
 
-#if mac set system settings
+[ ! -f $sshkeys ] && sh setup_git.sh || echo "SSH keys already generated. Skipping git setup."
 
-
-if [ ! -f $sshkeys ]; then
-	sh setup_git.sh
-fi
-
-# read -p "Use hyper settings sync? (y/n): "
-# if [ ${REPLY} == "y" ] 
-# then
-# 	sh setup_hyper_settings.sh
-# fi
-
-read -p "Use vs-code settings sync? (y/n): "
-if [ ${REPLY} == "y" ] 
-then 
-	sh setup_vs_code.sh
-fi
+[[ ! $(code --list-extensions) =~ "code-settings-sync" ]] && sh setup_vs_code.sh || echo "VSCode has already been set up."
 
 killall Finder
 
-echo "Done!"
+echo "Setup script finished!"

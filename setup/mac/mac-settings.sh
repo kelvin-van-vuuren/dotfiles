@@ -1,4 +1,5 @@
 # Mac system settings
+echo "Setting Mac settings..."
 
 # Show full path in finder
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
@@ -36,3 +37,5 @@ defaults write com.apple.screencapture type -string "png"
 #"Use `~/Downloads/Incomplete` to store incomplete downloads"
 defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
 defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Incomplete"
+
+echo "Finished setting Mac settings."

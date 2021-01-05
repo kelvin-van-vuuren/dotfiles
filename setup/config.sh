@@ -10,7 +10,8 @@ case "${unameOut}" in
 esac
 
 if [ $machine = Mac ]; then
-	sshkeys="~/.ssh/id_ed25519"
+	sshkeys="$HOME/.ssh/id_ed25519"
 else
-	#TODO: add linux path
+	echo "TODO: add linux path"
 fi
+

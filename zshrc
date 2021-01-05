@@ -76,7 +76,7 @@ plugins=(zsh-syntax-highlighting history-substring-search zsh-autosuggestions jd
 
 source $ZSH/oh-my-zsh.sh
 
-for file in $HOME/macos-setup/sourced/*; do
+for file in $HOME/dotfiles/sourced/*; do
    source "$file"
 done
 # User configuration
