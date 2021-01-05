@@ -10,8 +10,7 @@ eval "$(ssh-agent -s)"
 echo "Creating ssh keys. Use default name and location for key files. Make sure to add a passphrase:"
 ssh-keygen -t ed25519 -C "$email"
 
-rm ~/.ssh/config
-echo "Host *\n  AddKeysToAgent yes\n  UseKeychain yes\n  IdentityFile ~/.ssh/id_ed25519" >> ~/.ssh/config
+echo "Host *\n  AddKeysToAgent yes\n  UseKeychain yes\n  IdentityFile ~/.ssh/id_ed25519" > ~/.ssh/config
 ssh-add -K ~/.ssh/id_ed25519
 
 pbcopy < ~/.ssh/id_ed25519.pub
