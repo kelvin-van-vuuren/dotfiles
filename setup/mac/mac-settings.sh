@@ -34,6 +34,9 @@ defaults write com.apple.screencapture location -string "$HOME/Screenshots"
 # Setting screenshot format to PNG
 defaults write com.apple.screencapture type -string "png"
 
+# Disable the “Are you sure you want to open this application?” dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
 #"Use `~/Downloads/Incomplete` to store incomplete downloads"
 defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
 defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Incomplete"
