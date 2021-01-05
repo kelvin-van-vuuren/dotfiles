@@ -10,6 +10,6 @@ git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
 git clone git://github.com/zsh-users/zsh-autosuggestions.git
 git clone git://github.com/zsh-users/zsh-history-substring-search.git
 
-[[ ! $(echo $SHELL) =~ "zsh" ]] && { echo "Setting ZSH as shell..."; chsh -s /bin/zsh } || echo "Shell is already set to ZSH..."
+[[ ! $(echo $SHELL) =~ "zsh" ]] && { echo "Setting ZSH as shell..."; chsh -s /bin/zsh; } || echo "Shell is already set to ZSH..."
 
 echo "Finished setting up ZSH."
