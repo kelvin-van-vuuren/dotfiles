@@ -2,11 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/vuurenk/.oh-my-zsh"
-
-#jenv Java version switching command line tool. Useful for building MPS-extensions.
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -104,8 +100,6 @@ done
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
 export CPLUS_INCLUDE_PATH=/usr/local/include
 export LIBRARY_PATH=/usr/local/lib
 export PATH="$HOME/dotfiles/bin:$PATH"
