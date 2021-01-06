@@ -2,13 +2,14 @@
 
 source config.sh
 
-sh setup_homebrew.sh
-
 if [ $machine = Mac ]; then
+	xcode-select --install
 	sh mac/mac-settings.sh
 else 
 	echo "Setting Linux settings" 
 fi
+
+sh setup_homebrew.sh
 
 sh setup_zsh.sh
 
