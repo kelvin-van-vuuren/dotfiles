@@ -24,4 +24,3 @@
 
 - shell:
   - [source ~/.zshrc, Reloading zsh]
-  - [source ~/.hyper.js, Reloading hyper]
