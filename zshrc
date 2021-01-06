@@ -70,6 +70,9 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(zsh-syntax-highlighting history-substring-search zsh-autosuggestions brew git osx sublime z)
 
+#should fix autocompletion permissions error for a couple directories
+ZSH_DISABLE_COMPFIX=true
+
 source $ZSH/oh-my-zsh.sh
 
 for file in $HOME/dotfiles/sourced/*; do
