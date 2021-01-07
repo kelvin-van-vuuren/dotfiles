@@ -20,7 +20,7 @@ if is_mac; then
 	)
 elif is_linux; then
 	packages+=(
-		libglew2.1
+		libglew-dev
 		libglfw3
 		nodejs
 		silversearcher-ag
