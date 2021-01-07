@@ -2,7 +2,6 @@
 
 applications=(
 	sublime-text
-	slack
 )
 
 if is_mac; then
@@ -17,6 +16,7 @@ fi
 if is_linux; then
 	applications+=(
 		google-chrome-stable
+		slack-desktop
 	)
 
 	declare -A applications_wget=(
