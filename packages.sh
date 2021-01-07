@@ -24,6 +24,8 @@ elif is_linux; then
 		libglfw3
 		nodejs
 		silversearcher-ag
+		software-properties-common
+		vim
 	)
 fi
 
