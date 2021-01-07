@@ -105,4 +105,5 @@ done
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export CPLUS_INCLUDE_PATH=/usr/local/include
 export LIBRARY_PATH=/usr/local/lib
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export PATH="$HOME/dotfiles/bin:$PATH"
