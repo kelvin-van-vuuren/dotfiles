@@ -4,11 +4,11 @@ unameOut="$(uname -s)"
 case "${unameOut}" in
     Linux*)     os=Linux
 				package_manager=apt
-				copy_to_clipboard="xclip -selection clipboard -i"
+				copy_to_clipboard="xclip -selection clipboard"
 				open_webpage=xdg-open;;
     Darwin*)    os=Mac
 				package_manager=brew
-				copy_to_clipboard="pbcopy <"
+				copy_to_clipboard="pbcopy"
 				open_webpage=open;;
     CYGWIN*)    os=Cygwin;;
     MINGW*)     os=MinGw;;
