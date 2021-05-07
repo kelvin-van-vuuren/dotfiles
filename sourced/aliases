@@ -5,3 +5,7 @@ alias gdiff="git-diff"
 alias gs="git status"
 alias gcm="git commit -m"
 alias "cd.."="cd .."
+alias "vi"="nvim"
+test -f $(which subl3) && alias subl=subl3
+alias "m"="make"
+alias "mc"="make clean"

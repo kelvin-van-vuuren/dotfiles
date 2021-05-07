@@ -2,29 +2,29 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+ZSH=/usr/share/oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
-CASE_SENSITIVE="false"
+# CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true"
@@ -33,7 +33,7 @@ CASE_SENSITIVE="false"
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -45,7 +45,7 @@ CASE_SENSITIVE="false"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -64,20 +64,12 @@ COMPLETION_WAITING_DOTS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-syntax-highlighting history-substring-search zsh-autosuggestions brew git osx sublime z)
+plugins=(git zsh-syntax-highlighting zsh-history-substring-search zsh-autosuggestions)
 
-#should fix autocompletion permissions error for a couple directories
-ZSH_DISABLE_COMPFIX=true
-
-source $ZSH/oh-my-zsh.sh
-
-for file in $HOME/dotfiles/sourced/*; do
-   source "$file"
-done
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -95,15 +87,35 @@ done
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-export CPLUS_INCLUDE_PATH=/usr/local/include
-export LIBRARY_PATH=/usr/local/lib
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
+if [[ ! -d $ZSH_CACHE_DIR ]]; then
+  mkdir $ZSH_CACHE_DIR
+fi
+
+for file in $HOME/dotfiles/sourced/*; do
+   source "$file"
+done
+
+export PATH=$HOME/.config/rofi/bin:$PATH
+
+if [ -f /usr/bin/neofetch ]
+then
+        neofetch --disable Theme Icons Memory Resolution cpu gpu Uptime --color_blocks --ascii_distro Arch_small --os_arch --underline | column -t -s ':'
+fi
+
+export TERMINAL=/usr/local/bin/st
+export EDITOR=/usr/bin/nvim
 export PATH="$HOME/dotfiles/bin:$PATH"
+export PATH="$HOME/.local/share/gem/ruby/2.7.0/bin:$PATH"
+export LC_CTYPE=en_GB.UTF-8
+source $ZSH/oh-my-zsh.sh
+
+#Keybinds
+bindkey '^p' history-substring-search-up
+bindkey '^n' history-substring-search-down
+bindkey '^k' up-history
+bindkey '^j' down-history
+bindkey '^l' forward-char
+bindkey '^h' backward-char
+
+
