@@ -1,0 +1,25 @@
+{
+"diagnostic.errorSign": "",
+"diagnostic.infoSign": "ﬤ",
+"diagnostic.virtualText": true,
+"diagnostic.virtualTextPrefix": " ",
+"diagnostic.virtualTextCurrentLineOnly": false,
+
+"languageserver": {
+  "ccls": {
+    "command": "ccls",
+    "args": ["--log-file=/tmp/ccls.log", "-v=1"],
+    "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+    "rootPatterns": [".ccls", "compile_commands.json"],
+    "initializationOptions": {
+       "cache": {
+         "directory": "/tmp/ccls"
+       },
+       "client": {
+        "snippetSupport": true
+       },
+       "highlight": { "lsRanges" : true }
+     }
+  }
+} 
+}
