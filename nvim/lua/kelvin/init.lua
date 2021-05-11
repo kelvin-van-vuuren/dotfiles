@@ -1,9 +1,9 @@
-
 require("kelvin.telescope")
---require("theprimeagen.git-worktree")
---require("theprimeagen.harpoon")
+require("kelvin.lspsaga")
+require("kelvin.lualine")
+require("kelvin.bufferline")
+require("kelvin.treesitter")
 --require("theprimeagen.lsp")
---require("theprimeagen.statusline")
 
 P = function(v)
   print(vim.inspect(v))

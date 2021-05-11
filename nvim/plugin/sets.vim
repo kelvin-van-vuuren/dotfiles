@@ -1,14 +1,14 @@
+
 set clipboard=unnamedplus
 set exrc
 set guicursor=
 set relativenumber
 set nu
-set nohlsearch
+set hlsearch
 set hidden 
 set incsearch
 set scrolloff=8
-set signcolumn=yes
-set colorcolumn=80
+set signcolumn=yes:1
 set smarttab
 set cindent
 set tabstop=8
