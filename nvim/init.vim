@@ -1,7 +1,9 @@
 call plug#begin()
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'neovim/nvim-lspconfig'
+"Plug 'neovim/nvim-lspconfig'
+Plug 'ludovicchabant/vim-gutentags' "ctag management
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'glepnir/lspsaga.nvim'
 Plug 'hrsh7th/nvim-compe'
 Plug 'folke/tokyonight.nvim'
@@ -35,13 +37,16 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-lua require'lspconfig'.ccls.setup{}
+"lua require'lspconfig'.ccls.setup{}
 lua require('gitsigns').setup()
 lua vim.g.tokyonight_italic_functions = true
 let g:dashboard_default_executive ='telescope'
 
 syntax enable
 colorscheme tokyonight
+
+" switch between source and header:
+nnoremap <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 "Save as sudo with w!! (when lacking root)
 cmap w!! w !sudo tee % >/dev/null
@@ -69,3 +74,23 @@ augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
+
+"[gutentags] Don't pollute project dirs
+let g:gutentags_cache_dir = '~/.vim/tags/'
+
+function! s:JbzCppMan()
+    let old_isk = &iskeyword
+    setl iskeyword+=:
+    let str = expand("<cword>")
+    let &l:iskeyword = old_isk
+    execute 'Man ' . str
+endfunction
+command! JbzCppMan :call s:JbzCppMan()
+
+au FileType cpp nnoremap <buffer>K :JbzCppMan<CR>
+
+highlight CocErrorSign ctermfg=Red guifg=#db4b4b
+highlight CocWarningSign ctermfg=Brown guifg=#e0af68
+"highlight CocErrorHighlight link CocErrorLi
+highlight CocErrorVirtualText  guifg=#db4b4b guibg=#392739
+highlight CocWarningVirtualText ctermfg=Brown guifg=#e0af68 guibg=#473846
