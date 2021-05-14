@@ -1,31 +1,46 @@
 call plug#begin()
+
+"Theming
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'nvim-lua/plenary.nvim'
-"Plug 'neovim/nvim-lspconfig'
-Plug 'ludovicchabant/vim-gutentags' "ctag management
+Plug 'folke/tokyonight.nvim'
+
+"lsp
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'glepnir/lspsaga.nvim'
-Plug 'hrsh7th/nvim-compe'
-Plug 'folke/tokyonight.nvim'
-Plug 'airblade/vim-gitgutter'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+"file tree
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'lewis6991/gitsigns.nvim'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'scrooloose/nerdcommenter'
+
+"git
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+"status lines
 Plug 'hoob3rt/lualine.nvim'
 Plug 'akinsho/nvim-bufferline.lua'
+
+"fuzzy finder
 Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+"dashboard
 Plug 'glepnir/dashboard-nvim'
-Plug 'folke/lsp-trouble.nvim'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'liuchengxu/vim-which-key'
+
+"debugging
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
+
+"utility
+Plug 'scrooloose/nerdcommenter'
+Plug 'liuchengxu/vim-which-key'
+Plug 'ludovicchabant/vim-gutentags' "ctag management
+
 call plug#end()
 
 let mapleader = " "
@@ -37,7 +52,6 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-"lua require'lspconfig'.ccls.setup{}
 lua require('gitsigns').setup()
 lua vim.g.tokyonight_italic_functions = true
 let g:dashboard_default_executive ='telescope'
@@ -72,7 +86,7 @@ nnoremap <C-H> <C-W><C-H>
 
 augroup highlight_yank
     autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 80})
 augroup END
 
 "[gutentags] Don't pollute project dirs
@@ -91,6 +105,13 @@ au FileType cpp nnoremap <buffer>K :JbzCppMan<CR>
 
 highlight CocErrorSign ctermfg=Red guifg=#db4b4b
 highlight CocWarningSign ctermfg=Brown guifg=#e0af68
-"highlight CocErrorHighlight link CocErrorLi
-highlight CocErrorVirtualText  guifg=#db4b4b guibg=#392739
+highlight CocInfoSign ctermfg=Blue guifg=#0db9d7
+highlight CocHintSign guifg=#1abc9c
+highlight CocErrorVirtualText  ctermfg=Red guifg=#db4b4b guibg=#392739
 highlight CocWarningVirtualText ctermfg=Brown guifg=#e0af68 guibg=#473846
+highlight CocInfoVirtualText  ctermfg=Blue guifg=#0db9d7 guibg=#1F3B47
+highlight CocHintVirtualText  ctermfg=Blue guifg=#1abc9c guibg=#2C3E42
+highlight CocErrorHighlight cterm=undercurl gui=undercurl guisp=#db4b4b
+highlight CocWarningHighlight cterm=undercurl gui=undercurl guisp=#e0af68
+highlight CocInfoHighlight cterm=underline gui=underline guisp=#0db9d7
+highlight CocHintHighlight cterm=underline gui=underline guisp=#1abc9c
