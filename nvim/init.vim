@@ -8,6 +8,7 @@ Plug 'folke/tokyonight.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'glepnir/lspsaga.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'fedorenchik/qt-support.vim'
 
 "file tree
 Plug 'scrooloose/nerdtree'
@@ -15,8 +16,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 "git
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'airblade/vim-gitgutter'
+"Plug 'lewis6991/gitsigns.nvim'
+"Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 "status lines
@@ -52,7 +53,6 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-lua require('gitsigns').setup()
 lua vim.g.tokyonight_italic_functions = true
 let g:dashboard_default_executive ='telescope'
 
@@ -83,6 +83,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+vnoremap <leader>p "_dP
 
 augroup highlight_yank
     autocmd!
