@@ -106,8 +106,11 @@ fi
 export TERMINAL=/usr/local/bin/st
 export EDITOR=/usr/bin/nvim
 export PATH="$HOME/dotfiles/bin:$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$HOME/.local/bin/statusbar:$PATH"
 export PATH="$HOME/.local/share/gem/ruby/2.7.0/bin:$PATH"
-export LC_CTYPE=en_GB.UTF-8
+#export LC_CTYPE=en_US.UTF-8
+#export LC_ALL=en_US.UTF-8
 source $ZSH/oh-my-zsh.sh
 
 #Keybinds

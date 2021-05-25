@@ -15,8 +15,16 @@
     "initializationOptions": {
         "cache": {
           "directory": "/tmp/ccls"
-        }
-      }
+        },
+        "clang": {
+            "extraArgs": [
+                    "-I",
+                    "/usr/include/qt/QtCore",
+                    "/usr/include/qt/QtGui",
+                    "/usr/include/qt/QtWidgets"
+            ]
+        }        
+    }
   }
 }
 }
