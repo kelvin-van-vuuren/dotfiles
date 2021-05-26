@@ -1,3 +1,4 @@
+zmodload zsh/zprof
 # Flex
 neofetch --disable Theme Icons Memory Resolution cpu gpu Uptime --color_blocks --ascii_distro Arch_small --os_arch --underline | column -t -s ':'
 
@@ -18,11 +19,10 @@ COMPLETION_WAITING_DOTS="true"
 DOTFILES="$HOME/dotfiles"
 
 # Config
-autoload -U compinit && compinit -u
+source $DOTFILES/zsh/config/theme-and-appearance.zsh
 source $DOTFILES/zsh/config/completion.zsh
 source $DOTFILES/zsh/config/git.zsh
 source $DOTFILES/zsh/config/key-bindings.zsh
-source $DOTFILES/zsh/config/theme-and-appearance.zsh
 
 # Theme
 source $DOTFILES/zsh/themes/robbyrussel.zsh-theme
@@ -45,3 +45,4 @@ export PATH="$DOTFILES/bin:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/.local/bin/statusbar:$PATH"
 export PATH="$HOME/.local/share/gem/ruby/2.7.0/bin:$PATH"
+zprof
