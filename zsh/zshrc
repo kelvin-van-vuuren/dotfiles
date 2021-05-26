@@ -1,0 +1,47 @@
+# Flex
+neofetch --disable Theme Icons Memory Resolution cpu gpu Uptime --color_blocks --ascii_distro Arch_small --os_arch --underline | column -t -s ':'
+
+## History file configuration
+[ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
+HISTSIZE=32768; # Larger bash history (allow 32³ entries; default is 500)
+[ "$SAVEHIST" -lt 10000 ] && SAVEHIST=10000
+HISTCONTROL=ignoredups;
+HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"; # Make some commands not show up in history
+
+CASE_SENSITIVE="true"
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+HYPHEN_INSENSITIVE="true"
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+COMPLETION_WAITING_DOTS="true"
+# Dotfiles location
+DOTFILES="$HOME/dotfiles"
+
+# Config
+autoload -U compinit && compinit -u
+source $DOTFILES/zsh/config/completion.zsh
+source $DOTFILES/zsh/config/git.zsh
+source $DOTFILES/zsh/config/key-bindings.zsh
+source $DOTFILES/zsh/config/theme-and-appearance.zsh
+
+# Theme
+source $DOTFILES/zsh/themes/robbyrussel.zsh-theme
+
+# Plugins
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Custom sources
+for file in $DOTFILES/zsh/sourced/*; do
+   source "$file"
+done
+
+export TERMINAL=/usr/local/bin/st
+export EDITOR=/usr/bin/nvim
+
+# Path config
+export PATH="$DOTFILES/bin:$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$HOME/.local/bin/statusbar:$PATH"
+export PATH="$HOME/.local/share/gem/ruby/2.7.0/bin:$PATH"

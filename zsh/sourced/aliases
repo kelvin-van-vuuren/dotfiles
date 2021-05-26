@@ -1,11 +1,18 @@
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 
+alias g="git"
 alias gdiff="git-diff"
 alias gs="git status"
-alias gcm="git commit -m"
+
 alias "cd.."="cd .."
 alias "vi"="nvim"
 
 alias "m"="make"
 alias "mc"="make clean"
+
+# List directory contents
+alias lsa='ls -lah'
+alias l='ls -lah'
+alias ll='ls -lh'
+alias la='ls -lAh'
