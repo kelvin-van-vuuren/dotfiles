@@ -18,6 +18,7 @@ COMPLETION_WAITING_DOTS="true"
 DOTFILES="$HOME/dotfiles"
 
 # Config
+autoload -U compinit && compinit -u
 source $DOTFILES/zsh/config/theme-and-appearance.zsh
 source $DOTFILES/zsh/config/completion.zsh
 source $DOTFILES/zsh/config/git.zsh
@@ -44,3 +45,5 @@ export PATH="$DOTFILES/bin:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/.local/bin/statusbar:$PATH"
 export PATH="$HOME/.local/share/gem/ruby/2.7.0/bin:$PATH"
+
+alias luamake=/home/kelvin/.config/lua-language-server/3rd/luamake/luamake
