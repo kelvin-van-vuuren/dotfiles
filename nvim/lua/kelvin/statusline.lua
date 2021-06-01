@@ -17,7 +17,7 @@ local colors = {
 gls.left[2] = {
     statusIcon = {
         provider = function()
-            return "   "
+            return "   "
         end,
         highlight = {colors.bg, colors.blue},
         separator = "  ",
@@ -56,7 +56,7 @@ gls.left[5] = {
         provider = "DiffAdd",
         condition = checkwidth,
         icon = "  ",
-        highlight = {colors.fg, colors.bg}
+        highlight = {colors.green, colors.bg}
     }
 }
 
@@ -82,7 +82,7 @@ gls.left[8] = {
     DiagnosticError = {
         provider = "DiagnosticError",
         icon = "  ",
-        highlight = {colors.grey, colors.bg}
+        highlight = {colors.red, colors.bg}
     }
 }
 
@@ -100,8 +100,8 @@ gls.right[1] = {
             return " "
         end,
         condition = require("galaxyline.provider_vcs").check_git_workspace,
-        highlight = {colors.grey, colors.lightbg},
-        separator = "",
+        highlight = {colors.fg, colors.lightbg},
+        separator = "",
         separator_highlight = {colors.lightbg, colors.bg}
     }
 }
@@ -110,7 +110,7 @@ gls.right[2] = {
     GitBranch = {
         provider = "GitBranch",
         condition = require("galaxyline.provider_vcs").check_git_workspace,
-        highlight = {colors.grey, colors.lightbg}
+        highlight = {colors.fg, colors.lightbg},
     }
 }
 
@@ -152,7 +152,7 @@ gls.right[4] = {
 gls.right[5] = {
     time_icon = {
         provider = function()
-            return " "
+            return "☰ "
         end,
         separator = "",
         separator_highlight = {colors.green, colors.bg},
@@ -162,9 +162,10 @@ gls.right[5] = {
 
 gls.right[6] = {
     time = {
-        provider = function()
-            return "  " .. os.date("%H:%M") .. " "
-        end,
+      provider = function ()
+        local percent = math.floor(100 * vim.fn.line('.') / vim.fn.line('$'))
+        return " " .. string.format(' %s%s ', percent, '%')
+      end,
         highlight = {colors.green, colors.lightbg}
     }
 }
