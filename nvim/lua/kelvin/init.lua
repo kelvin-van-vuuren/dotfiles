@@ -1,9 +1,13 @@
 require("kelvin.telescope")
 require("kelvin.lspsaga")
-require("kelvin.lualine")
+require("kelvin.statusline")
+require("kelvin.gitsigns")
 require("kelvin.bufferline")
+require("kelvin.nvimtree")
 require("kelvin.treesitter")
---require("theprimeagen.lsp")
+require("kelvin.highlights")
+
+require('nvim-autopairs').setup()
 
 P = function(v)
   print(vim.inspect(v))

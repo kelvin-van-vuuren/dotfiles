@@ -2,7 +2,8 @@ call plug#begin()
 
 "Theming
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'folke/tokyonight.nvim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'siduck76/nvim-base16.lua'
 
 "lsp
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -11,17 +12,13 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'fedorenchik/qt-support.vim'
 
 "file tree
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'kyazdani42/nvim-tree.lua'
 
 "git
-"Plug 'lewis6991/gitsigns.nvim'
-"Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
+Plug 'lewis6991/gitsigns.nvim'
 
 "status lines
-Plug 'hoob3rt/lualine.nvim'
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'akinsho/nvim-bufferline.lua'
 
 "fuzzy finder
@@ -30,17 +27,15 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
-"dashboard
-Plug 'glepnir/dashboard-nvim'
-
 "debugging
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 
 "utility
+Plug 'windwp/nvim-autopairs'
 Plug 'scrooloose/nerdcommenter'
-Plug 'liuchengxu/vim-which-key'
 Plug 'ludovicchabant/vim-gutentags' "ctag management
+Plug 'tweekmonster/startuptime.vim'
 
 call plug#end()
 
@@ -53,11 +48,15 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-lua vim.g.tokyonight_italic_functions = true
+"lua vim.g.tokyonight_italic_functions = true
 let g:dashboard_default_executive ='telescope'
 
 syntax enable
-colorscheme tokyonight
+lua << EOF
+local base16 = require 'base16'
+base16(base16.themes["onedark"], true)
+EOF
+"colorscheme tokyonight
 
 " switch between source and header:
 nnoremap <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
