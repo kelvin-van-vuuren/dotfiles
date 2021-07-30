@@ -24,7 +24,6 @@ require('telescope').setup {
     }
 }
 
---require("telescope").load_extension("git_worktree")
 require('telescope').load_extension('fzy_native')
 
 local M = {}
@@ -34,15 +33,5 @@ M.search_dotfiles = function()
         cwd = "$HOME/dotfiles/",
     })
 end
-
---M.git_branches = function()
-    --require("telescope.builtin").git_branches({
-        --attach_mappings = function(_, map)
-            --map('i', '<c-d>', actions.git_delete_branch)
-            --map('n', '<c-d>', actions.git_delete_branch)
-            --return true
-        --end
-    --})
---end
 
 return M
