@@ -1,0 +1,34 @@
+#!/bin/sh
+alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
+
+# Colorize outputs
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
+
+# Confirm before overwriting something
+alias cp="cp -i"
+alias mv='mv -i'
+alias rm='rm -i'
+
+# Get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4 | head -5'
+
+# Get top process eating cpu
+alias pscpu='ps auxf | sort -nr -k 3 | head -5'
+
+# Git stuff
+alias g="git"
+alias gdiff="git-diff"
+alias gs="git status"
+
+alias "cd.."="cd .."
+alias "vi"="nvim"
+
+alias "m"="make"
+alias "mc"="make clean"
+
+# List directory contents
+alias lsa='ls -lah'
+alias l='ls -lah'
+alias ll='ls -lh'
+alias la='ls -lAh'

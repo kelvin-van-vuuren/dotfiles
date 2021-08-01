@@ -1,0 +1,16 @@
+#!/bin/sh
+
+HISTFILE="$XDG_CACHE_HOME"/zsh/history
+HISTSIZE=1000000
+SAVEHIST=1000000
+HISTCONTROL=ignoredups;
+HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"; # Make some commands not show up in history
+
+CASE_SENSITIVE="false"
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+HYPHEN_INSENSITIVE="true"
+# Uncomment the following line if pasting URLs and other text is messed up.
+COMPLETION_WAITING_DOTS="true"
+
+export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$HOME/programs/gdb_printers/python:$PATH"

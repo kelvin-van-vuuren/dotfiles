@@ -1,0 +1,24 @@
+#!/bin/bash
+
+SCRIPTPATH=$(dirname $(readlink -f "$0"))
+
+ln -sf $SCRIPTPATH/.config/x11/xresources $HOME/.Xresources
+ln -sf $SCRIPTPATH/.config/x11/xprofile $HOME/.xprofile
+ln -sf $SCRIPTPATH/.config/zsh/zprofile $HOME/.zprofile
+
+mkdir -p $HOME/.config
+for f in .config/*; do
+    if [ "$f" != ".config/nvim" ]; then
+        ln -sf "$SCRIPTPATH/$f" $HOME/.config/ 
+    fi
+done
+
+.config/nvim/install
+
+ln -sf $SCRIPTPATH/.local/share/backgrounds $HOME/.local/share/
+ln -sf $SCRIPTPATH/.local/share/bg $HOME/.local/share/
+
+mkdir -p $HOME/.local/bin
+for f in .local/bin/*; do
+   ln -sf "$SCRIPTPATH/$f" $HOME/.local/bin/
+done

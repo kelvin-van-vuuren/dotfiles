@@ -1,0 +1,2 @@
+#!/bin/sh
+xwallpaper --stretch $XDG_DATA_HOME/bg

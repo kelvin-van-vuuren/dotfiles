@@ -1,0 +1,20 @@
+pfetch
+
+setopt autocd # Automatically cd into typed directory
+setopt interactive_comments # Allow comments in interactive shells
+stty stop undef # Disable ctrl-s to freeze terminal.
+zle_highlight=('paste:none') # Remove paste highlight
+unsetopt BEEP # Stop beeping
+
+autoload -Uz colors && colors
+
+source "$ZDOTDIR/zsh-functions"
+
+for file in `ls $ZDOTDIR/sourced/`; do
+    zsh_add_file "sourced/$file"
+done
+
+plugins=("zsh-users/zsh-autosuggestions"  "zsh-users/zsh-syntax-highlighting" "zsh-users/zsh-history-substring-search")
+for plugin in $plugins; do
+    zsh_add_plugin $plugin
+done

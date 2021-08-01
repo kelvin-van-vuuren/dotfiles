@@ -1,0 +1,4 @@
+#!/bin/sh
+# Source xprofile and start dwm
+[ -f ~/.xprofile ] && . ~/.xprofile
+ssh-agent dwm
