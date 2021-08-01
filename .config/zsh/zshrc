@@ -6,6 +6,11 @@ stty stop undef # Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none') # Remove paste highlight
 unsetopt BEEP # Stop beeping
 
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+_comp_options+=(globdots)		# Include hidden files.
+
 autoload -Uz colors && colors
 
 source "$ZDOTDIR/zsh-functions"
@@ -18,3 +23,8 @@ plugins=("zsh-users/zsh-autosuggestions"  "zsh-users/zsh-syntax-highlighting" "z
 for plugin in $plugins; do
     zsh_add_plugin $plugin
 done
+
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+
+compinit
