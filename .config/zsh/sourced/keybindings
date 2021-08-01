@@ -71,8 +71,12 @@ bindkey '\C-x\C-e' edit-command-line
 # file rename magick
 bindkey "^[m" copy-prev-shell-word
 
+bindkey '^e' end-of-line
+bindkey '^a' beginning-of-line
+
 bindkey '^k' up-history
 bindkey '^j' down-history
+
 bindkey '^l' forward-char
 bindkey '^h' backward-char
 
@@ -83,3 +87,4 @@ bindkey '^p' history-substring-search-up
 autoload -U history-substring-search-down
 zle -N history-substring-search-down
 bindkey '^n' history-substring-search-down
+
