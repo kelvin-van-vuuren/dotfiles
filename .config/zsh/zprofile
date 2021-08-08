@@ -17,6 +17,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export PF_INFO="ascii title os kernel pkgs shell wm uptime"
+export SUCKLESSDIR="$HOME/.config/suckless"
 
 # Start X server if not running
 [ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
