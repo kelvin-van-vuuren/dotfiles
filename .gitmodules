@@ -1,3 +1,6 @@
 [submodule ".config/suckless"]
 	path = .config/suckless
-	url = https://github.com/kelvin-van-vuuren/suckless
+	url = git@github.com:kelvin-van-vuuren/suckless.git
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = git@github.com:kelvin-van-vuuren/nvim.git
