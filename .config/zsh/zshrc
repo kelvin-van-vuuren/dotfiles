@@ -28,3 +28,6 @@ done
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 
 compinit
+
+path+=("$HOME/.cargo/bin")
+export PATH
