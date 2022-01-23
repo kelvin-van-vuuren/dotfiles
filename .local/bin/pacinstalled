@@ -1,0 +1,3 @@
+#!/bin/sh
+
+pacman -Q | fzf --multi --preview 'pacman -Qi {1}' 

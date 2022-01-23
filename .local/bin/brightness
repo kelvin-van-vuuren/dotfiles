@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# echo $1
+# echo $2
+#
+# montoi2cnum=("1" "3" "2") # change cables back to normal
+# display=${montoi2cnum[$2]}
+#
+# echo "display $display"
+# echo " arg 1: $1 arg 2: $2 display: $display" >> /home/kelvin/brightnessdebug.txt
+#
+# ddcutil setvcp 10 $1 1 -d "$display" --sleep-multiplier .1
+#
+# #display new brightness via dunst
+# brightness=$(printf "%.0f\n" $(ddcutil getvcp 10 -d "$display" --sleep-multiplier .1 --brief | awk -F ' ' '{print $4}'))
+# dunstify -a "changebrightness" -u low -r 9991 -h int:value:"$brightness" -i "brightness-$1" "Brightness: $brightness%" -t 2000
+
+function send_notification() {
+	brightness=$(printf "%.0f\n" $(brillo -G))
+	dunstify -a "changebrightness" -u low -r 9991 -h int:value:"$brightness" -i "brightness-$1" "Brightness: $brightness%" -t 2000
+}
+
+case $1 in
+up)
+	brillo -A 1 -e
+	send_notification $1
+	;;
+down)
+	brillo -U 1 -e
+	send_notification $1
+	;;
+esac
