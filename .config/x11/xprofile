@@ -7,5 +7,5 @@ setbg & # Set wallpaper
 redshift & # Screen colour adjustment at night
 xset r rate 300 50 & # Increase key speed via rate change
 dunst & # Notifications
-picom -config & # Compositor
+picom & # Compositor
 sudo modprobe ddcci & # needed on desktop to get sys/backlight stuff to work with brillo for backlight control
