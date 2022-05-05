@@ -27,6 +27,8 @@ done
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 
+[ -f $XDG_CONFIG_HOME/lf/icons ] && source $XDG_CONFIG_HOME/lf/icons
+
 compinit
 
 path+=("$HOME/.cargo/bin")
