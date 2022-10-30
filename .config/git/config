@@ -18,3 +18,6 @@
     d = diff
     diff-staged = diff --cached
     ds = diff-staged
+
+[init]
+    defaultBranch = main
