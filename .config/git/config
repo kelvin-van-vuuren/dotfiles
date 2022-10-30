@@ -1,3 +1,7 @@
+[user]
+    email = kelvin@kelvinvv.xyz
+    name = Kelvin van Vuuren
+
 [alias]
 	unstage = restore --staged
 	search = log -p -S # Search and show commits that contain string
