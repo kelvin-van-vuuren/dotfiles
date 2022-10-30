@@ -1,0 +1,16 @@
+[alias]
+	unstage = restore --staged
+	search = log -p -S # Search and show commits that contain string
+    a = add
+    b = branch
+    c = commit
+    co = checkout
+    s = status
+    l = log
+    lo = log --oneline
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit
+    last = log -1 HEAD
+    stash-unstaged = stash --keep-index
+    d = diff
+    diff-staged = diff --cached
+    ds = diff-staged
