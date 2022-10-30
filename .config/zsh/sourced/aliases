@@ -34,3 +34,6 @@ alias ll='ls -lh'
 alias la='ls -lAh'
 
 alias lf='lfub'
+
+# Start info with vi keybindings
+alia info='info --vi'
