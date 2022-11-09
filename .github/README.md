@@ -9,8 +9,10 @@ git clone --bare --recurse-submodules git@github.com:kelvin-van-vuuren/dotfiles.
 # checkout will move any pre-existing dotfiles that are in the way to a backup folder '.dotfiles-backup'
 cd ${HOME}
 mkdir -p .dotfiles-backup && \
-git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
-xargs -I{} mv {} .dotfiles-backup/{}
+# create missing directories in .dotfiles-backup
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout 2>&1 | grep -E "\s+\." | awk {'print $1'} | sed 's%/[^/]*$%%' | uniq | xargs -I{} mkdir -p {} .dotfiles-backup/{} && \
+# move pre-existing dotfiles into corresponding locations in .dotfiles-backup
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout 2>&1 | grep -E "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
 
 # now check out
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
@@ -20,6 +22,9 @@ git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntra
 
 # source freshly cloned zshrc to get dotfiles alias
 source $HOME/.config/zsh/zshrc
+
+# recursively initialise submodules (nvim + dwm + st + dmenu)
+dotfiles submodule update --init --recursive
 ```
 
 ##### Usage
