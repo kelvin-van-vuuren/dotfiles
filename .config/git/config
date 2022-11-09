@@ -27,3 +27,12 @@
 
 [pull]
     rebase = true
+
+[diff]
+    submodule = log
+
+[submodule]
+    recurse = true
+
+[push]
+    recurseSubmodules = check
