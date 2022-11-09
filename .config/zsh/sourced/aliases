@@ -36,4 +36,7 @@ alias la='ls -lAh'
 alias lf='lfub'
 
 # Start info with vi keybindings
-alia info='info --vi'
+alias info='info --vi'
+
+# Alias for working with dotifles using bare repo
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
