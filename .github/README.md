@@ -37,6 +37,17 @@ dotfiles config --local status.showUntrackedFiles no
 dotfiles submodule update --init --recursive
 ```
 
+##### Setup suckless programs: dwm (window manager), st (terminal) and dmenu (program launcher)
+```
+cd .config/suckless/dwm && sudo make clean install && cd ../st && sudo make clean install && \
+cd ../dmenu && sudo make clean install
+```
+
+##### Setup nvim: backup previous nvim share folder then run nvim to install plugins + language servers
+```
+cd {$HOME} && mv .local/share/nvim .local/share/nvim-backup && nvim
+```
+
 ### Usage
 The following alias, set in zshrc, is used to modify the git bare repo managing the dotfiles
 ```
