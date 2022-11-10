@@ -1,20 +1,3 @@
-# Luke's lf settings
-
-
-# Note on Image Previews
-# For those wanting image previews, like this system, there are four steps to
-# set it up. These are done automatically for LARBS users, but I will state
-# them here for others doing it manually.
-#
-# 1. ueberzug must be installed.
-# 2. The scope file (~/.config/lf/scope for me), must have a command similar to
-#    mine to generate ueberzug images.
-# 3. A `set cleaner` line as below is a cleaner script.
-# 4. lf should be started through a wrapper script (~/.local/bin/lfub for me)
-#    that creates the environment for ueberzug. This command can be be aliased
-#    in your shellrc (`alias lf="lfub") or if set to a binding, should be
-#    called directly instead of normal lf.
-
 # Basic vars
 set shellopts '-eu'
 set ifs "\n"
@@ -27,37 +10,45 @@ set previewer '~/.config/lf/scope'
 
 cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
 
-cmd mkfile ${{
+cmd mkfile %{{
   printf "File Name: "
   read ans
-  $EDITOR $ans
+  touch $ans
 }}
 
-cmd extract ${{
-    clear; tput cup 0 0; tput bold
-	set -f
-	printf "%s\n\t" "$fx"
-	printf "extract?[y/N]"
-	read ans
+cmd extract %{{
+	printf "extract '$fx'? "
+    read ans
 	[ $ans = "y" ] && aunpack $fx
+    printf ""
 }}
 
-cmd delete ${{
-    clear; tput cup 0 0; tput bold
-	set -f
-	printf "%s\n\t" "$fx"
-	printf "delete?[y/N]"
-	read ans
+cmd delete %{{
+    filetype=""
+    if [ -d $fx ]; then
+        filetype="directory"
+    elif [ -f $fx ]; then
+        filetype="file"
+    fi
+	printf "rm: delete $filetype '$fx'? "
+    read ans
 	[ $ans = "y" ] && rm -rf -- $fx
+    printf ""
 }}
 
-cmd bulkrename $vidir
+cmd zip %{{
+    printf "create zip of '$fx'? "
+    read ans
+    [ $ans = "y" ] && zip -r $fx".zip" ${fx##*/}
+    printf ""
+}}
 
 # Bindings
 map . set hidden!
 
 map <c-f> $lf -remote "send $id select '$(fzf)'"
 map gh
+map m
 map D delete
 map E extract
 map md push :mkdir<space>
@@ -69,11 +60,12 @@ map x $$f
 map X !$f
 
 map A rename # at the very end
-map c push A<c-u> # new rename
+map C push A<c-u> # new rename
 map I push A<c-a> # at the very beginning
 map i push A<a-b><a-b><a-f> # before extension
 map a push A<a-b> # after extension
 map B bulkrename
+map Z zip
 
 map <c-e> down
 map <c-y> up
