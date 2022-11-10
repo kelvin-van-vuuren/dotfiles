@@ -1,1 +1,1 @@
-/home/kelvin/.config/zsh/zprofile
+.config/zsh/zprofile
