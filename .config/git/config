@@ -18,6 +18,8 @@
     d = diff
     diff-staged = diff --cached
     ds = diff-staged
+    ri = rebase -i
+    rc = rebase --continue
 
 [init]
     defaultBranch = main
