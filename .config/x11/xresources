@@ -35,6 +35,13 @@ st.borderpx: 10
 #define base0D #61afef
 #define base0E #c678dd
 #define base0F #be5046
+#define white  #eeeeee
+
+dwm.normfgcolor:      base07
+dwm.normbgcolor:      base00
+dwm.selbgcolor:       base01
+dwm.selfgcolor:       white
+dwm.selbordercolor:   base07
 
 st.foreground:   base07
 #ifdef background_opacity
