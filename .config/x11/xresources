@@ -37,11 +37,22 @@ st.borderpx: 10
 #define base0F #be5046
 #define white  #eeeeee
 
+
 dwm.normfgcolor:      base07
 dwm.normbgcolor:      base00
 dwm.selbgcolor:       base01
 dwm.selfgcolor:       white
 dwm.selbordercolor:   base07
+
+dmenu.normfgcolor:               base07
+dmenu.normbgcolor:               base00
+dmenu.selbgcolor:                base01
+dmenu.selfgcolor:                white
+dmenu.selbordercolor:            base07
+dmenu.highlightnormfgcolor:      base0A
+dmenu.highlightnormbgcolor:      base00
+dmenu.highlightselbgcolor:       base01
+dmenu.highlightselfgcolor:       base0A
 
 st.foreground:   base07
 #ifdef background_opacity
