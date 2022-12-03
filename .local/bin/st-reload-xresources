@@ -1,0 +1,3 @@
+#!/bin/sh
+
+pidof st | xargs kill -s USR1
