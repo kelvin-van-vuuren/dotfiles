@@ -9,7 +9,6 @@
 !-- remove this if your DPI is ok -- !
 Xft.dpi:   144  
 
-st.font:         JetBrainsMono Nerd Font:style:medium:pixelsize=17
 
 ! window border inner
 st.opacity: 200
@@ -54,7 +53,9 @@ dmenu.highlightnormbgcolor:      base00
 dmenu.highlightselbgcolor:       base01
 dmenu.highlightselfgcolor:       base0A
 dmenu.prompt:                    : 
+dmenu.font:                      monospace:size=10
 
+st.font:         monospace:pixelsize=17
 st.foreground:   base07
 #ifdef background_opacity
 st.background:   [background_opacity]base00
@@ -83,15 +84,15 @@ st.color15:      base07
 
 ! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt)
 
-  st.color16:      base09
-  st.color17:      base0F
-  st.color18:      base01
-  st.color19:      base02
-  st.color20:      base04
-  st.color21:      base06
+st.color16:      base09
+st.color17:      base0F
+st.color18:      base01
+st.color19:      base02
+st.color20:      base04
+st.color21:      base06
 
-  tabbed.selbgcolor:   #282c34
-  tabbed.selfgcolor:   #d6d8eb
+tabbed.selbgcolor:   #282c34
+tabbed.selfgcolor:   #d6d8eb
 
-  tabbed.normfgcolor:  #9294a8
-  tabbed.normbgcolor:  #353b45
+tabbed.normfgcolor:  #9294a8
+tabbed.normbgcolor:  #353b45
