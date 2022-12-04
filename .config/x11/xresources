@@ -53,6 +53,7 @@ dmenu.highlightnormfgcolor:      base0A
 dmenu.highlightnormbgcolor:      base00
 dmenu.highlightselbgcolor:       base01
 dmenu.highlightselfgcolor:       base0A
+dmenu.prompt:                    : 
 
 st.foreground:   base07
 #ifdef background_opacity
