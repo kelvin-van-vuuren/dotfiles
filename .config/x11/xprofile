@@ -3,6 +3,7 @@
 keyboardsetup & # Increase key repeat speed and remaps caps lock to super key
 xrdb $XDG_CONFIG_HOME/x11/xresources & xrdbpid=$! # Setup Xresources
 xrandr --dpi 144 --output DisplayPort-0 --mode 3840x2160 --pos 0x0 --primary --rate 60 # For home LG 4k monitor
+xautolock -time 10 -locker slock -detectsleep -corners 0-00 & # lock screen after ten minutes of inactivity, keep mouse in top right corner to prevent lock from occuring
 setbg & # Set wallpaper
 redshift & # Screen colour adjustment at night
 dunst & # Notifications
