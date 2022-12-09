@@ -36,7 +36,6 @@ st.borderpx: 10
 #define base0F #be5046
 #define white  #eeeeee
 
-
 dwm.normfgcolor:      base07
 dwm.normbgcolor:      base00
 dwm.selbgcolor:       base01
@@ -54,6 +53,12 @@ dmenu.highlightselbgcolor:       base01
 dmenu.highlightselfgcolor:       base0A
 dmenu.prompt:                    : 
 dmenu.font:                      monospace:size=10
+
+slock.background:                white
+slock.init:                      #2d2d2d
+slock.input:                     #005577
+slock.inputalt:                  #227799
+slock.failed:                    #CC3333
 
 st.font:         monospace:pixelsize=17
 st.foreground:   base07
