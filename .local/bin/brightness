@@ -14,9 +14,6 @@ down)
 	;;
 esac
 
-for monitor in 1 2 3
-do
-    ddcutil setvcp 10 $op 1 -d $monitor --sleep-multiplier .1 
-done
+ddcutil setvcp 10 $op 1 --sleep-multiplier .1 
 
 send_notification
