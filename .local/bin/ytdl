@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# download mp3 using youtube-dl and move to music dir
-youtube-dl --extract-audio --audio-format mp3 -o "$HOME/Music/tunes/ytdl/%(title)s.%(ext)s" --embed-thumbnail --add-metadata --metadata-from-title "%(artist)s - %(title)s" $1

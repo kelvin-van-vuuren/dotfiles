@@ -1,0 +1,13 @@
+# Always extract audio
+--extract-audio
+
+# In MP3 format
+--audio-format mp3 
+
+# Location
+-o "$HOME/Music/tunes/ytdl/%(title)s.%(ext)s" 
+
+# Artwork and metadata
+--embed-thumbnail 
+--add-metadata 
+--metadata-from-title "%(artist)s - %(title)s" 
