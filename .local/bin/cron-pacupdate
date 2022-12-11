@@ -2,16 +2,16 @@
 
 # Syncs repositories and downloads updates, meant to be run as a cronjob.
 
-notify-send "Repository Sync" "Checking for package updates..."
+notify-send --icon="package" "Repository Sync" "Checking for package updates..."
 
-yay -Syyuw --noconfirm || notify-send "Error downloading updates.
+yay -Syyuw --noconfirm || notify-send --icon="warning" "Error downloading updates.
 
 Check your internet connection, if pacman is already running, or run update manually to see errors."
 pkill -RTMIN+18 dwmblocks
 
 if yay -Qu | grep -v "\[ignored\]"
 then
-	notify-send "Repository Sync" "Updates available. Click statusbar icon () for update."
+	notify-send --icon="package" "Repository Sync" "Updates available. Click statusbar icon () for update."
 else
-	notify-send "Repository Sync"  "Sync complete. No new packages for update."
+	notify-send --icon="package" "Repository Sync"  "Sync complete. No new packages for update."
 fi
