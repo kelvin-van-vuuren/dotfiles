@@ -35,7 +35,7 @@ The single base directory relative to which user-specific configuration files sh
 * [**dmenu**](https://github.com/kelvin-van-vuuren/dmenu): my fork of [dmenu](https://suckless.org/tools/dmenu), a fast and dynamic menu for [X](https://www.x.org).
 * [**slock**](https://github.com/kelvin-van-vuuren/slock): my fork of [slock](https://suckless.org/tools/slock), a simple display locker.
 * [**nvim**](https://github.com/kelvin-van-vuuren/nvim): my config of [Neovim](https://neovim.io/), a modal text editor, using [NvChad](https://nvchad.com/) as a base.
-* [**zsh**](https://www.zsh.org/): [shell](https://en.wikipedia.org/wiki/Unix_shell) config and a handful of associated [plugins](https://github.com/kelvin-van-vuuren/dotfiles/blob/main/.config/zsh/zshrc#L22).
+* [**zsh**](https://www.zsh.org/): [shell](https://en.wikipedia.org/wiki/Unix_shell) config, [aliases](https://wiki.archlinux.org/title/Bash#Aliases) and a handful of associated [plugins](https://github.com/kelvin-van-vuuren/dotfiles/blob/main/.config/zsh/zshrc#L22).
 * [**lf**](https://github.com/gokcehan/lf): terminal based file manager
 * [**mpv**](https://mpv.io): command line video player.
 * [**newsboat**](https://newsboat.org/): terminal based [RSS](https://en.wikipedia.org/wiki/RSS) feed reader.
