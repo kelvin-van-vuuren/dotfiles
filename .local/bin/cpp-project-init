@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Cpp project template, run from project root dir
+
+# Build script and CMakeLists
+cp -r ~/programming/templates/cmake/* .
+
+# clangd language server configs
+cp ~/programming/templates/clangd/.* . 2>/dev/null
+
+# pre-commit configs, currently just clang-format check
+# install pre-commit if not installed: 'pip install pre-commit'
+# initialise hooks: 'pre-commit install'
+cp ~/programming/templates/pre-commit/.* . 2>/dev/null
+
+# github workflows, currently just clang-format check
+cp -r ~/programming/templates/github/ .github
