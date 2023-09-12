@@ -31,5 +31,7 @@ done
 
 compinit
 
+export GPG_TTY=$(tty) # needed for pinentry-tty
+
 path+=("$HOME/.cargo/bin")
 export PATH
