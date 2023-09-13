@@ -60,7 +60,7 @@ slock.input:                     #005577
 slock.inputalt:                  #227799
 slock.failed:                    #CC3333
 
-st.font:         monospace:pixelsize=17
+st.font:         monospace:pixelsize=21
 st.foreground:   base07
 #ifdef background_opacity
 st.background:   [background_opacity]base00

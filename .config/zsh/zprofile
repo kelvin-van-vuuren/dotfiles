@@ -43,5 +43,6 @@ export LESS_TERMCAP_ZW=$(tput rsupm)
 export QT_STYLE_OVERRIDE="gtk2"
 
 # Start X server if not running
-[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
+exec startx "$XINITRC"
+# [ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
 # . "$XINITRC"

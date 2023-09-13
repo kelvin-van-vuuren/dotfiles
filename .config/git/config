@@ -25,13 +25,13 @@
     defaultBranch = main
     
 [pull]
-    rebase = true
+    ; rebase = true
 
 [diff]
     submodule = log
 
-[submodule]
-    recurse = true
+; [submodule]
+;     recurse = true
 
 [push]
     recurseSubmodules = check

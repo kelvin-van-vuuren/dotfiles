@@ -4,7 +4,7 @@
 # These .desktop entries can also be seen and changed in ~/.local/share/applications/
 
 text/x-shellscript=text.desktop;
-x-scheme-handler/mailto=mail.desktop;
+x-scheme-handler/mailto=google-chrome.desktop
 text/plain=text.desktop;
 application/postscript=pdf.desktop;
 application/pdf=pdf.desktop;
