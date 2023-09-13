@@ -1,6 +1,7 @@
 [user]
     email = kelvin@kelvinvv.xyz
     name = Kelvin van Vuuren
+    signingkey =
 
 [alias]
 	unstage = restore --staged
@@ -35,3 +36,6 @@
 
 [push]
     recurseSubmodules = check
+
+[commit]
+    gpgsign = true
