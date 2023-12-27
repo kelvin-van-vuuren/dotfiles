@@ -1,0 +1,41 @@
+#!/bin/bash
+
+function get_volume() {
+  pactl list sinks | grep Volume: | awk 'FNR == 1 { print $5 }' | cut -f1 -d '%'
+}
+
+function send_notification() {
+	dunstify -a "changevolume" -u low -r 9991 -h int:value:"$1" -i "volume-$1" "Volume: $1" -t 2000
+}
+
+function volume_notification() {
+  vol="$(get_volume)%"
+  send_notification $vol
+}
+
+function toggle_mute_notification() {
+  muted=$(pactl list sinks | awk '/Mute:/ { print $2 }')
+  if [ "$muted" = "yes" ]; then
+    vol="🔇muted"
+  else 
+    vol="$(get_volume)%"
+  fi
+  send_notification $vol
+}
+
+case $1 in
+up)
+  pactl set-sink-volume @DEFAULT_SINK@ +1%
+  volume_notification
+	;;
+down)
+  pactl set-sink-volume @DEFAULT_SINK@ -1%
+  volume_notification
+	;;
+mute)
+  pactl set-sink-mute @DEFAULT_SINK@ toggle 
+  toggle_mute_notification
+	;;
+esac
+
+pkill -RTMIN+10 dwmblocks
