@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Copy this script to /usr/local/bin and then add the following:
+# <username> ALL=(ALL) NOPASSWD: /usr/local/bin/brightness-laptop
+# to the /etc/sudoers file using visudo so that this script can be run with sudo privileges without requiring a password
+# Bound to laptop volume keys in dwm config file
+
+if [ "$EUID" -ne 0 ]
+then
+        echo "Please run $0 as root"
+        exit
+fi
+
+function send_notification() {
+	dunstify -u low -r 9991 -h int:value:"$1" -i "brightness-$1" "Brightness: $1%" -t 2000
+}
+
+max=$(cat /sys/devices/pci0000:00/0000:00:02.0/drm/card*/card*-eDP-1/intel_backlight/max_brightness)
+echo "max: $max"
+bd=/sys/devices/pci0000:00/0000:00:02.0/drm/card*/card*-eDP-1/intel_backlight/brightness
+
+bdv=$(cat $bd)
+
+case $1 in
+        up)
+                echo $(( bdv + 1 )) > $bd
+                cat $bd
+        ;;
+        down)
+                echo $(( bdv - 1 )) > $bd
+                cat $bd
+        ;;
+        *)
+        echo "$bdv"
+esac
+
+bdv=$(cat $bd)
+percent=$(( ($bdv * 100) / $max ))
+send_notification $percent
