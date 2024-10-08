@@ -6,6 +6,12 @@ stty stop undef # Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none') # Remove paste highlight
 unsetopt BEEP # Stop beeping
 
+# History
+HISTSIZE=10000000
+SAVEHIST=10000000
+HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
+setopt inc_append_history
+
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
