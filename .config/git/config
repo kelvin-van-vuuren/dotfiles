@@ -4,6 +4,7 @@
     signingkey =
 
 [alias]
+  updiff = !git fetch && git log --oneline HEAD..@{u}
 	unstage = restore --staged
 	search = log -p -S # Search and show commits that contain string
     a = add
@@ -36,6 +37,7 @@
 
 [push]
     recurseSubmodules = check
+    autoSetupRemote = true
 
 [commit]
     gpgsign = true
